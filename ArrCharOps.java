@@ -220,27 +220,26 @@ public class ArrCharOps {
 
         int minLength = Math.min(str1.length(), str2.length());
 
+        // 1. השוואת תווים
         for (int i = 0; i < minLength; i++) {
-
             char c1 = str1.charAt(i);
             char c2 = str2.charAt(i);
 
-            if (c1 < c2)
-                return -1;
-            if (c1 > c2)
-                return 1;
+            // נשתמש בהפרש התווים כדי להחזיר מספר שלילי/חיובי/אפס
+            int diff = c1 - c2;
 
+            if (diff != 0) {
+                // אם יש הבדל בתווים, נחזיר את ההפרש.
+                // אם diff שלילי (c1 < c2), ה-compareTo יהיה שלילי.
+                // אם diff חיובי (c1 > c2), ה-compareTo יהיה חיובי.
+                return diff;
+            }
         }
 
-        if (str1.length() < str2.length()) {
-            return -1;
-        }
-
-        if (str1.length() > str2.length()) {
-            return 1;
-        }
-
-        return 0;
-
+        // 2. השוואת אורכים
+        // אם הגענו לכאן, הן זהות עד minLength.
+        // אם str1 ארוכה יותר, התוצאה חיובית (1). אם קצרה יותר, התוצאה שלילית (1-). אם
+        // שוות, התוצאה 0.
+        return str1.length() - str2.length();
     }
 }
