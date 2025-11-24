@@ -217,28 +217,19 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-
         int minLength = Math.min(str1.length(), str2.length());
 
-        // השוואה תו-אחר-תו
         for (int i = 0; i < minLength; i++) {
             char c1 = str1.charAt(i);
             char c2 = str2.charAt(i);
 
-            if (c1 < c2)
-                return -1;
-            if (c1 > c2)
-                return 1;
+            if (c1 != c2) {
+                return c1 - c2; // ✨ בדיוק כמו Java
+            }
         }
 
-        // כל התווים עד המינימום זהים → משווים לפי אורך
-        if (str1.length() < str2.length())
-            return -1;
-
-        if (str1.length() > str2.length())
-            return 1;
-
-        // זהות מוחלטת
-        return 0;
+        // אם כל האותיות עד אורך הקצרה שוות:
+        return str1.length() - str2.length(); // ✨ בדיוק כמו Java
     }
+
 }
