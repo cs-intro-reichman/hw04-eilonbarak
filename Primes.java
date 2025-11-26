@@ -5,6 +5,8 @@ public class Primes {
         boolean[] isPrime = new boolean[number + 1];
         int count = 0;
 
+        System.out.println("Prime numbers up to " + number + ":");
+
         for (int i = 2; i <= number; i++) {// איתחול כל המספרים ל-true
             isPrime[i] = true;
 
