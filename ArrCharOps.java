@@ -219,13 +219,13 @@ public class ArrCharOps {
     public static int compareTo(String str1, String str2) {
         int minLength = Math.min(str1.length(), str2.length());
 
-        if (str1 == null || str2 == null) {
-            return -2;
-        }
-
         for (int i = 0; i < minLength; i++) {
             char c1 = str1.charAt(i);
             char c2 = str2.charAt(i);
+
+            if (str1 == null || str2 == null) {
+                return -2;
+            }
 
             if (c1 != c2) {
                 return c1 - c2;
