@@ -27,7 +27,7 @@ public class Primes {
 
             }
         }
-        double percent = (double) count / (number - 1) * 100;
+        double percent = (double) count / number * 100;
         int percentInt = (int) percent;
 
         System.out.println(
