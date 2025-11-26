@@ -217,22 +217,32 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
+
+        // 🔴 בדיקות קלט (Error Handling)
+        if (str1 == null || str2 == null)
+            return -2;
+        if (str1.length() == 0 || str2.length() == 0)
+            return -2;
+
         int minLength = Math.min(str1.length(), str2.length());
 
+        // 🔵 השוואה תו־תו
         for (int i = 0; i < minLength; i++) {
             char c1 = str1.charAt(i);
             char c2 = str2.charAt(i);
 
-            if (str1 == null || str2 == null) {
-                return -2;
-            }
-
-            if (c1 != c2) {
-                return c1 - c2;
-            }
+            if (c1 < c2)
+                return -1;
+            if (c1 > c2)
+                return 1;
         }
 
-        return str1.length() - str2.length();
-    }
+        // 🔵 אם כל התווים שווים עד כאן → משווים לפי אורך
+        if (str1.length() < str2.length())
+            return -1;
+        if (str1.length() > str2.length())
+            return 1;
 
+        return 0;
+    }
 }
